@@ -1,0 +1,15 @@
+---
+title: "Course Project 2 - Plotly"
+subtitle: "Developing Data Products"
+author: "Aubin Bannwarth"
+date: "14/08/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This will be an intro to 
