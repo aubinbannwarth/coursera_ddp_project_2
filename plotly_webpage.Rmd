@@ -3,13 +3,52 @@ title: "Course Project 2 - Plotly"
 subtitle: "Developing Data Products"
 author: "Aubin Bannwarth"
 date: "14/08/2021"
-output: html_document
+output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  message = FALSE,
+  warning = FALSE
+)
 ```
 
-## Introduction
+## Summary
 
-This will be an intro to 
+This is the web presentation created for the second course project in the *Developing Data Products* course by Johns Hopkins University on Coursera.  
+
+The assignment was to create a web presentation using R Markdown, and to include a plot created with **plotly**.  
+
+## Creating the plotly interactive plot - I
+
+
+We begin by loading the **plotly** and **tidyverse** packages:
+
+```{r}
+library(plotly)
+library(tidyverse)
+```
+
+**tidyverse** includes the **ggplot2** package that will be used in the next slide to create a simple non-interactive plot, before being converted to a **plotly** object using `ggplotly()`.
+
+## Creating the plotly interactive plot - II
+
+We will use the `diamonds` dataset that comes with **ggplot2**. We can create a plot using the usual **ggplot2** syntax and assign the result to a variable `my_ggplot`:
+```{r}
+my_ggplot <- diamonds %>%
+  ggplot() +
+  geom_freqpoly(aes(x = price, y = ..density.., color = clarity)) +
+  labs(
+    title = "Distribution of diamond prices by clarity", 
+    x = "Price (USD)",
+    y = "Density",
+    color = "Clarity"
+  )
+```
+## Creating the plotly interactive plot - III
+We now only need to pass our `my_ggplot` object to the `ggplotly()` function:
+```{r, fig.width=5, fig.asp=0.618, out.width="70%", fig.align='center'}
+my_ggplot %>% ggplotly()
+```
+
